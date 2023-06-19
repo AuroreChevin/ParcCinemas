@@ -29,7 +29,7 @@
 				</div>
 			</form>
 			<div class="row">
-				<div th:each="cinema:${listCinemas}" class="card m-3"
+				<div th:each="cinema:${listCinemas}" class="card m-3 border-success"
 					style="max-width: 540px;">
 					<div class="row g-0">
 						
@@ -42,7 +42,7 @@
 								<p class="card-text">Nombre de salles :
 									<small th:text="${cinema.nbRoom}"  class="text-muted"> </small>
 								</p>
-								<a class="btn btn-success" th:href = "@{/listFilms}">Films à l'affiche</a> <a
+								<a class="btn btn-success" th:href = "@{/listFilms(idCinema=${cinema.idCinema})}">Films à l'affiche</a> <a
 									class="btn btn btn-danger ">Supprimer</a> <a
 									class="btn btn-primary">Edit</a>
 							</div>

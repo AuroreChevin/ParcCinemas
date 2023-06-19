@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import fr.fms.dao.CinemaRepository;
 import fr.fms.dao.CityRepository;
+import fr.fms.dao.FilmRepository;
 import fr.fms.entities.Cinema;
 import fr.fms.entities.City;
+import fr.fms.entities.Film;
 
 @Service
 public class IbusinessImpl implements Ibusiness{
@@ -18,6 +20,8 @@ public class IbusinessImpl implements Ibusiness{
 	CinemaRepository cinemaRepository;
 	@Autowired
 	CityRepository cityRepository;
+	@Autowired
+	FilmRepository filmRepository;
 	@Override
 	public Page<Cinema> readAllCinemasPages(String kw, int page) throws Exception {
 		return cinemaRepository.findByNameCinemaContains(kw, PageRequest.of(page, 4));
@@ -30,5 +34,10 @@ public class IbusinessImpl implements Ibusiness{
 	public List<City> readAllCities() {
 		return cityRepository.findAll();
 	}
+	@Override
+	public Page<Film> readAllFilmsPagesByIdCinema(Long idCinema, int page) throws Exception {
+		return filmRepository.findByCinemaIdCinema(idCinema, PageRequest.of(page, 4));
+	}
+	
 	
 }

@@ -4,16 +4,15 @@
 	layout:decorate="layout">
 <head>
 <meta charset="UTF8">
-<title>Cinemas</title>
+<title>Park Life Cinema</title>
 </head>
 <body>
 	<div layout:fragment="content">
 		<div class="container">
 			<div class="row">
-				<div th:each="film:${listFilms}" class="card m-3"
+				<div th:each="film:${listFilms}" class="card m-3 border-success"
 					style="max-width: 540px;">
 					<div class="row g-0">
-						
 						<div class="col-md-8">
 							<div class="card-body">
 								<h5 th:text="${film.title}" class="card-title"></h5>

@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 
 import fr.fms.entities.Cinema;
 import fr.fms.entities.City;
+import fr.fms.entities.Film;
 
 
 public interface Ibusiness {
@@ -30,4 +31,12 @@ public interface Ibusiness {
 	 * @return List<City>
 	 */
 	public List<City> readAllCities();
+	/**
+	 * Méthode qui renvoi la liste des cinémas en base paginée
+	 * @param idCity est l'id du cinéma dont on souhaite afficher tous les films du cinema 
+	 * @param page correspond à la page active côté front, cela assure la pagination
+	 * @return Page<Film>
+	 * @throws Exception
+	 */
+	public Page<Film> readAllFilmsPagesByIdCinema(Long idCinema, int page) throws Exception;
 }

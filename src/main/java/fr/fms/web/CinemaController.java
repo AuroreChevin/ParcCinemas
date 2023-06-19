@@ -6,14 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.fms.business.IbusinessImpl;
-import fr.fms.dao.CinemaRepository;
 import fr.fms.entities.Cinema;
 import fr.fms.entities.City;
 
@@ -22,10 +20,19 @@ public class CinemaController {
 	@Autowired
 	IbusinessImpl business;
 	private final Logger logger = LoggerFactory.getLogger(CinemaController.class);
+	
 	@GetMapping("/")
 	public String home() {
 		return "cinemas";
 	}
+	/**
+	 * Méthode en GET correspondant à l'url .../index ou page d'accueil de l'application
+	 * @param model sert à ajouter des éléments partagés avec la vue
+	 * @param page correspond à la page active côté front, cela assure la pagination / par défaut vaut 0
+	 * @param kw est un mot dont on souhaite afficher tous les articles le contenant / par défaut chaine vide
+	 * @param idCity est l'identifiant de la catégorie dont on souhaite afficher tous les articles / par défaut vaut 0 
+	 * @return la page cinemas.html 
+	 */
 	@GetMapping("/index")
 	public String index(Model model, @RequestParam(name="page", defaultValue = "0") int page,
 									@RequestParam(name="keyword", defaultValue = "") String kw,

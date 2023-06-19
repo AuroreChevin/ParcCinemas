@@ -26,7 +26,7 @@ public class ParcCinemaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//generateData();
+		generateData();
 	}
 	public void generateData() {
 		City toulouse = cityRepository.save(new City(null, "Toulouse", null));
