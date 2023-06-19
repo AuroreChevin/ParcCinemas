@@ -26,7 +26,7 @@ public class ParcCinemaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		generateData();
+		//generateData();
 	}
 	public void generateData() {
 		City toulouse = cityRepository.save(new City(null, "Toulouse", null));
@@ -35,7 +35,7 @@ public class ParcCinemaApplication implements CommandLineRunner {
 		City rennes = cityRepository.save(new City(null, "Rennes", null));
 		
 		Cinema americanCosmo = cinemaRepository.save(new Cinema(null, "American Cosmograph", "24 Rue Montardy","0561236620", 3, toulouse, null));
-		Cinema pathWilson = cinemaRepository.save(new Cinema(null, "Pathé Wilson", " 3 Pl. du Président Thomas Wilson"," 0892696696", 10, toulouse, null));
+		Cinema pathWilson = cinemaRepository.save(new Cinema(null, "Pathé Wilson", " 3 Pl. du Président Thomas Wilson","0892696696", 10, toulouse, null));
 		Cinema cinamand = cinemaRepository.save(new Cinema(null, "Cin'amand", "E.Leclerc, Rocade du N,","0369266620", 8, saintAmandLesEaux, null));
 		Cinema pathMass = cinemaRepository.save(new Cinema(null, "Pathé Masséna", "31 Av. Jean Médecin","0892696696", 5, nice, null));
 		Cinema rialto = cinemaRepository.save(new Cinema(null, "Rialto", "4 rue de Rivoli","0568120452", 3, nice, null));
@@ -52,7 +52,9 @@ public class ParcCinemaApplication implements CommandLineRunner {
 		filmRepository.save(new Film(null, "Le royaume des chats", "Hiroyuki Morita", 75, rialto));
 		filmRepository.save(new Film(null, "Les Goonies", "Richard Donner", 114, pathMass));
 		filmRepository.save(new Film(null, "Vice et versa", "Pete Docter", 95, pathMass));
-		
-		
+		cityRepository.findAll().forEach(c -> System.out.println(c));
+		cinemaRepository.findAll().forEach(a -> System.out.println(a));
+		filmRepository.findAll().forEach(f -> System.out.println(f));
+					
 	}
 }

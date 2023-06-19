@@ -31,6 +31,7 @@ public class Cinema {
 	private int nbRoom;
 	@ManyToOne
 	private City city;
+	@ToString.Exclude
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "cinema")
 	private Collection<Film> films;
 }

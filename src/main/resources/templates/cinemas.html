@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="fr"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+<meta charset="UTF8">
+<title>Cinemas</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="container">
+			<div class="text-center">
+				<div class="btn-group m-auto" role="group">
+					<a th:each="c:${listCities}" class="btn btn-dark m-2"
+						th:href="@{/index(idCity=${c.idCity})}" th:text="${c.nameCity}"
+						role="button"></a>
+				</div>
+			</div>
+			<form th:action="@{/index}" method="get">
+				<div class="input-group mt-4 mb-4">
+					<div class="input-group-prepend">
+						<button id="button-addon7" type="submit" class="btn btn-success">
+							<span class="material-symbols-outlined"> Rechercher </span>
+						</button>
+					</div>
+					<input type="search" placeholder="Saisir un mot clé" name="keyword"
+						th:value="${keyword}" aria-describedby="button-addon7"
+						class="form-control">
+				</div>
+			</form>
+			<div class="row">
+				<div th:each="cinema:${listCinemas}" class="card m-3"
+					style="max-width: 540px;">
+					<div class="row g-0">
+						
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 th:text="${cinema.nameCinema}" class="card-title"></h5>
+								<p class="card-text" th:text="${cinema.address}" ><p>
+								<p class="card-text" th:text="${cinema.city.nameCity}"></p>
+								<p class="card-text"> Téléphone :  <small th:text="${cinema.phone}"></small></p>
+								<p class="card-text">Nombre de salles :
+									<small th:text="${cinema.nbRoom}"  class="text-muted"> </small>
+								</p>
+								<a class="btn btn-success" th:href = "@{/listFilms}">Films à l'affiche</a> <a
+									class="btn btn btn-danger ">Supprimer</a> <a
+									class="btn btn-primary">Edit</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<ul class="nav nav-pills">
+				<li class="nav-item"
+					th:class="${currentPage==status.index}?'active':''"
+					th:each="page,status:${pages}"><a class="nav-link"
+					th:href="@{/index(page=${status.index}, keyword=${keyword})}"
+					th:text="${status.index}"></a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
