@@ -36,12 +36,15 @@ public class FilmController {
 	public String films(Model model, @RequestParam(name="page", defaultValue = "0") int page,
 									 @RequestParam(name="idCinema" , defaultValue = "0") Long idCinema) throws Exception {
 		Page<Film> films;
+		Cinema cinema;
+		cinema = business.readOneCinema(idCinema);
 		try {
 			films = business.readAllFilmsPagesByIdCinema(idCinema, page);
 			model.addAttribute("listFilms", films.getContent());
 			model.addAttribute("pages", new int[films.getTotalPages()]);
 			model.addAttribute("currentPage", page);
 			model.addAttribute("idCinema", idCinema);
+			model.addAttribute("cinema", cinema);
 			
 		}catch(Exception e) {
 			logger.error("Impossible d'afficher les films" , e.getMessage());

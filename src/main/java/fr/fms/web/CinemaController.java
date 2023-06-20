@@ -117,7 +117,7 @@ public class CinemaController {
 	 * @return page cinema.html pour l'édition d'un cinéma
 	 */
 	@GetMapping("/editCinema")
-	public String editFilm(Long idCinema, Model model) {
+	public String editCinema(Long idCinema, Model model) {
 		Cinema cinema;
 		List<City> cities;
 		try {

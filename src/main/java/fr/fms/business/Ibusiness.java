@@ -82,6 +82,30 @@ public interface Ibusiness {
 	 * @throws Exception
 	 */
 	public Cinema readOneCinema(Long idCinema) throws Exception;
-	
-	
+	/**
+	 * Méthode qui renvoi la liste des villes en base paginée
+	 * @param page correspond à la page active côté front, cela assure la pagination
+	 * @return Page<City>
+	 * @throws Exception
+	 */
+	public Page<City> readAllCitiesPages(int page) throws Exception;
+	/**
+	 * Méthode qui supprime une ville à partir de son id
+	 * @param idCity
+	 * @throws Exception
+	 */
+	public void deleteCity(Long idCity) throws Exception;
+	/**
+	 * Méthode qui ajoute une city
+	 * @param city
+	 * @throws Exception
+	 */
+	public void saveCity(City city) throws Exception;
+	/**
+	 * Méthode qui renvoi la liste des cinémas en base
+	 * @param idCity est l'id de la ville dont on souhaite afficher tous les cinemas d'une ville
+	 * @return Lity<Cinema>
+	 * @throws Exception
+	 */
+	public List<Cinema> readAllCinemasByIdCity(Long idCity) throws Exception;
 }

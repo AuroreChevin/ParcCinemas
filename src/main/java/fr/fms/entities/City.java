@@ -10,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,8 +27,10 @@ public class City implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCity;
 	@NotNull
+	@Size(min=1,max=50)
 	private String nameCity;
 	@ToString.Exclude
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "city")
+	@Cascade(CascadeType.ALL)
 	private Collection<Cinema> cinemas;
 }

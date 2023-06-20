@@ -74,6 +74,22 @@ public class IbusinessImpl implements Ibusiness{
 		Optional<Cinema> optional = cinemaRepository.findById(idCinema);
 		return optional.isPresent() ? optional.get() : null; 
 	}
+	@Override
+	public Page<City> readAllCitiesPages(int page) throws Exception {
+		return cityRepository.findAll(PageRequest.of(page, 4));
+	}
+	@Override
+	public void deleteCity(Long idCity) throws Exception {
+		cityRepository.deleteById(idCity);
+	}
+	@Override
+	public void saveCity(City city) throws Exception {
+		cityRepository.save(city);
+	}
+	@Override
+	public List<Cinema> readAllCinemasByIdCity(Long idCity) throws Exception {
+		return cinemaRepository.findByCityIdCity(idCity);
+	}
 	
 	
 }
