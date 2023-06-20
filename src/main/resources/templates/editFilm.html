@@ -30,7 +30,7 @@
   					</div>
   					<label class="control-label">Cinéma : </label>
   					<select class="form-select" name="cinema" th:value="${film.cinema}">
-  						<option th:each="cinema:${listCinemas}" th:value="${cinema.idCinema}" th:text="${cinema.nameCinema}"></option>	
+  						<option th:each="cinema:${listCinemas}" th:value="${cinema.idCinema}" th:text="${cinema.nameCinema}" th:selected="${film.cinema.idCinema==cinema.idCinema}"></option>	
   					</select>
   					<span th:errors="${film.cinema.nameCinema}" class="text-danger"></span>
 					<div>	

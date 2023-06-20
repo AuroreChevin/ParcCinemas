@@ -3,6 +3,8 @@ package fr.fms.business;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -52,9 +54,25 @@ public class IbusinessImpl implements Ibusiness{
 		filmRepository.save(film);
 		
 	}
+	@Override
 	public Film readOneFilm(Long idFilm) throws Exception{
 		Optional<Film> optional = filmRepository.findById(idFilm);
 		return optional.isPresent() ? optional.get() : null;
+	}
+	@Override
+	public void deleteCinema(Long idCinema) throws Exception {
+		cinemaRepository.deleteById(idCinema);
+		
+	}
+	@Override
+	public void saveCinema(Cinema cinema) throws Exception{
+		cinemaRepository.save(cinema);
+		
+	}
+	@Override
+	public Cinema readOneCinema(Long idCinema) throws Exception{
+		Optional<Cinema> optional = cinemaRepository.findById(idCinema);
+		return optional.isPresent() ? optional.get() : null; 
 	}
 	
 	

@@ -63,5 +63,25 @@ public interface Ibusiness {
 	 * @param idFilm
 	 * @throws Exception
 	 */
-	public Film readOneFilm(Long idFilm) throws Exception; 
+	public Film readOneFilm(Long idFilm) throws Exception;
+	/**
+	 * Méthode qui supprime un cinéma à partir de son id
+	 * @param idCinema
+	 * @throws Exception
+	 */
+	public void deleteCinema(Long idCinema) throws Exception;
+	/**
+	 * Méthode qui ajoute un cinema
+	 * @param cinema
+	 * @throws Exception
+	 */
+	public void saveCinema(Cinema cinema) throws Exception;
+	/**
+	 * Méthode qui lit un cinema
+	 * @param idCinema
+	 * @throws Exception
+	 */
+	public Cinema readOneCinema(Long idCinema) throws Exception;
+	
+	
 }

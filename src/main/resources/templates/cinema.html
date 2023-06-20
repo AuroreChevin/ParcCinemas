@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th	="http://thymeleaf.org"
+	  xmlns:layout	="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="layout">
+	<head>
+		<meta charset="utf-8">
+		<title>Cinéma</title>
+	</head>
+	<body>
+		<div layout:fragment ="content">
+		<div class="card col-md-4 col-xs-8 mx-auto">
+  			<h5 class="card-header bg-success text-white">Cinéma</h5>
+  			<div class="card-body">
+  				<form th:action="@{/saveCinema}" method="Post">
+  				<input type="hidden" name="idCinema" th:value="${cinema.idCinema}">
+  					<div class="form-group">
+  						<label class="control-label">Nom du cinéma : </label>
+  						<input class="form-control" type="text" name="nameCinema" th:value="${cinema.nameCinema}">
+  						<span th:errors="${cinema.nameCinema}" class="text-danger"></span>
+  					</div>
+  					<div class="form-group">
+  						<label class="control-label">Adresse : </label>
+  						<input class="form-control" type="text" name="address" th:value="${cinema.address}">
+  						<span th:errors="${cinema.address}" class="text-danger"></span>
+  					</div>
+  					<div class="form-group">
+  						<label class="control-label">Téléphone : </label>
+  						<input class="form-control" type="text" name="phone" th:value="${cinema.phone}">
+  						<span th:errors="${cinema.phone}" class="text-danger"></span>
+  					</div>
+  					<div class="form-group">
+  						<label class="control-label">Nombre de salles : </label>
+  						<input class="form-control" type="text" name="nbRoom" th:value="${cinema.nbRoom}">
+  						<span th:errors="${cinema.nbRoom}" class="text-danger"></span>
+  					</div>
+  					<label class="control-label">Ville : </label>
+  					<select class="form-select" name="city" th:value="${cinema.city}">
+  						<option th:each="city:${listCities}" th:value="${city.idCity}" th:text="${city.nameCity}"></option>	
+  					</select>
+					<div>	
+  					<button type="submit" class="btn btn-success mt-2">Enregistrer</button>
+  					</div>
+  				</form>
+  			</div>
+		</div>
+		</div>
+	</body>
+</html>

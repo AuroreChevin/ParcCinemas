@@ -117,6 +117,6 @@ public class FilmController {
 		}catch(Exception e) {
 			logger.error("Impossible de mettre à jour le film" , e.getMessage());
 		}
-		return "film";
+		return "editFilm";
 	}
 }
