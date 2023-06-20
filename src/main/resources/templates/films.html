@@ -18,8 +18,8 @@
 								<h5 th:text="${film.title}" class="card-title"></h5>
 								<p class="card-text" th:text="${film.director}" ><p>
 								<p class="card-text" th:text="${film.duration}+ ' min'"></p>
-								<a class="btn btn btn-danger ">Supprimer</a>
-								<a class="btn btn-primary">Edit</a>
+								<a class="btn btn btn-danger" th:href="@{/deleteFilm(idFilm=${film.idFilm}, page=${currentPage}, idCinema=${idCinema})}">Supprimer</a>
+								<a class="btn btn-primary" th:href="@{/editFilm(idFilm=${film.idFilm})}">Edit</a>
 							</div>
 						</div>
 					</div>
@@ -29,7 +29,7 @@
 				<li class="nav-item"
 					th:class="${currentPage==status.index}?'active':''"
 					th:each="page,status:${pages}"><a class="nav-link"
-					th:href="@{/index(page=${status.index}, keyword=${keyword})}"
+					th:href="@{/listFilms(page=${status.index}, idCinema=${idCinema})}"
 					th:text="${status.index}"></a></li>
 			</ul>
 		</div>

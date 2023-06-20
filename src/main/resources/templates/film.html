@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th	="http://thymeleaf.org"
+	  xmlns:layout	="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="layout">
+	<head>
+		<meta charset="utf-8">
+		<title>Film</title>
+	</head>
+	<body>
+		<div layout:fragment ="content">
+		<div class="card col-md-4 col-xs-8 mx-auto">
+  			<h5 class="card-header bg-success text-white">Film</h5>
+  			<div class="card-body">
+  				<form th:action="@{/saveFilm}" method="Post">
+  				<input type="hidden" name="idFilm" th:value="${film.idFilm}">
+  					<div class="form-group">
+  						<label class="control-label">Titre du film : </label>
+  						<input class="form-control" type="text" name="title" th:value="${film.title}">
+  						<span th:errors="${film.title}" class="text-danger"></span>
+  					</div>
+  					<div class="form-group">
+  						<label class="control-label">Nom du réalisateur : </label>
+  						<input class="form-control" type="text" name="director" th:value="${film.director}">
+  						<span th:errors="${film.director}" class="text-danger"></span>
+  					</div>
+  					<div class="form-group">
+  						<label class="control-label">Durée du film : </label>
+  						<input class="form-control" type="text" name="duration" th:value="${film.duration}">
+  						<span th:errors="${film.duration}" class="text-danger"></span>
+  					</div>
+  					<label class="control-label">Cinéma : </label>
+  					<select class="form-select" name="cinema" th:value="${film.cinema}">
+  						<option th:each="cinema:${listCinemas}" th:value="${cinema.idCinema}" th:text="${cinema.nameCinema}" th:selected="${film.cinema.idCinema==cinema.idCinema}"></option>	
+  					</select>
+  					<span th:errors="${film.cinema.nameCinema}" class="text-danger"></span>
+					<div>	
+  					<button type="submit" class="btn btn-success mt-2">Enregistrer</button>
+  					</div>
+  				</form>
+  			</div>
+		</div>
+		</div>
+	</body>
+</html>

@@ -1,6 +1,7 @@
 package fr.fms.business;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 
@@ -39,4 +40,28 @@ public interface Ibusiness {
 	 * @throws Exception
 	 */
 	public Page<Film> readAllFilmsPagesByIdCinema(Long idCinema, int page) throws Exception;
+	/**
+	 * Méthode qui supprime un film à partir de son id
+	 * @param idFilm
+	 * @throws Exception
+	 */
+	public void deleteFilm(Long idFilm) throws Exception;
+	/**
+	 * Méthode qui renvoi la liste des cinémas 
+	 * @return list<Cinema>
+	 * @throws Exception
+	 */
+	public List<Cinema> readAllCinemas() throws Exception;
+	/**
+	 * Méthode qui ajoute un film
+	 * @param film
+	 * @throws Exception
+	 */
+	public void saveFilm (Film film) throws Exception;
+	/**
+	 * Méthode qui lit un film
+	 * @param idFilm
+	 * @throws Exception
+	 */
+	public Film readOneFilm(Long idFilm) throws Exception; 
 }

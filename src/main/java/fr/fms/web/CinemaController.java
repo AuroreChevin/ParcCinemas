@@ -30,7 +30,7 @@ public class CinemaController {
 	 * @param model sert à ajouter des éléments partagés avec la vue
 	 * @param page correspond à la page active côté front, cela assure la pagination / par défaut vaut 0
 	 * @param kw est un mot dont on souhaite afficher tous les articles le contenant / par défaut chaine vide
-	 * @param idCity est l'identifiant de la catégorie dont on souhaite afficher tous les articles / par défaut vaut 0 
+	 * @param idCity est l'identifiant de la ville dont on souhaite afficher tous les cinémas / par défaut vaut 0 
 	 * @return la page cinemas.html 
 	 */
 	@GetMapping("/index")

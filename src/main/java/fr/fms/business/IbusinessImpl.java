@@ -1,6 +1,7 @@
 package fr.fms.business;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -37,6 +38,23 @@ public class IbusinessImpl implements Ibusiness{
 	@Override
 	public Page<Film> readAllFilmsPagesByIdCinema(Long idCinema, int page) throws Exception {
 		return filmRepository.findByCinemaIdCinema(idCinema, PageRequest.of(page, 4));
+	}
+	@Override
+	public void deleteFilm(Long idFilm) throws Exception {
+		filmRepository.deleteById(idFilm);
+	}
+	@Override
+	public List<Cinema> readAllCinemas() throws Exception {
+		return cinemaRepository.findAll();
+	}
+	@Override
+	public void saveFilm(Film film) throws Exception {
+		filmRepository.save(film);
+		
+	}
+	public Film readOneFilm(Long idFilm) throws Exception{
+		Optional<Film> optional = filmRepository.findById(idFilm);
+		return optional.isPresent() ? optional.get() : null;
 	}
 	
 	
