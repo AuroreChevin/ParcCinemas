@@ -27,10 +27,10 @@ public class ParcCinemaJpaTests {
 		Iterable<City> cities = cityRepository.findAll();
 		assertThat(cities).isNotEmpty();
 	}
-	@Test
-	void should_find_all_cinemas() {
-		cinemaRepository.save(new Cinema(null, "Movies", "12 rue du monde", "0623025155",2, null, null));
-		Iterable<Cinema> cinemas = cinemaRepository.findAll();
-		assertThat(cinemas).isNotEmpty();
-	}
+	
+	
+	  @Test void should_find_all_cinemas() { cinemaRepository.save(new Cinema(null,
+	  "Movies", "12 rue du monde", "0623025155",2, null, null)); Iterable<Cinema>
+	  cinemas = cinemaRepository.findAll(); assertThat(cinemas).isNotEmpty(); }
+	 
 }

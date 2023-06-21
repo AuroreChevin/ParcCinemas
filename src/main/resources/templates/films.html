@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="fr"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout">
+	layout:decorate="layout"
+	xmlns:sec		  ="http://www.thymeleaf.org/extras/spring-security5">
 <head>
 <meta charset="UTF8">
 <title>Park Life Cinema</title>
@@ -19,8 +20,8 @@
 								<h5 th:text="${film.title}" class="card-title"></h5>
 								<p class="card-text" th:text="${film.director}" ><p>
 								<p class="card-text" th:text="${film.duration}+ ' min'"></p>
-								<a class="btn btn btn-danger" th:href="@{/deleteFilm(idFilm=${film.idFilm}, page=${currentPage}, idCinema=${idCinema})}">Supprimer</a>
-								<a class="btn btn-primary" th:href="@{/editFilm(idFilm=${film.idFilm})}">Edit</a>
+								<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn btn-danger" th:href="@{/deleteFilm(idFilm=${film.idFilm}, page=${currentPage}, idCinema=${idCinema})}">Supprimer</a>
+								<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary" th:href="@{/editFilm(idFilm=${film.idFilm})}">Edit</a>
 							</div>
 						</div>
 					</div>

@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,7 +30,7 @@ public class CinemaController {
 	
 	@GetMapping("/")
 	public String home() {
-		return "cinemas";
+		return "redirect:/index";
 	}
 	/**
 	 * Méthode en GET correspondant à l'url .../index ou page d'accueil de l'application
@@ -54,6 +56,14 @@ public class CinemaController {
 			model.addAttribute("currentPage", page);
 			model.addAttribute("searchByKeyword", kw);
 			model.addAttribute("listCities", cities);
+			/*
+			 * String username; Object principal =
+			 * SecurityContextHolder.getContext().getAuthentication().getPrincipal(); if
+			 * (principal instanceof UserDetails) { username =
+			 * ((UserDetails)principal).getUsername(); } else { username =
+			 * principal.toString(); if(username.contains("anonymous")) username = ""; }
+			 * model.addAttribute("username", " " +username);
+			 */
 		}catch(Exception e) {
 			logger.error("Impossible d'afficher les cinémas" , e.getMessage());
 		}
@@ -69,11 +79,10 @@ public class CinemaController {
 	public String deleteCinema(Long idCinema,int page) {
 		try {
 			business.deleteCinema(idCinema);
-			logger.info("ok");
 		}catch(Exception e) {
 			logger.error("Impossible de supprimer le cinema" , e.getMessage());
 		}
-		return "redirect:/index?page="+page;
+		return "redirect:/index";
 	}
 	/**
 	 * Méthode en GET correspondant à l'url .../cinema permettant d'ajouter un nouveau cinema

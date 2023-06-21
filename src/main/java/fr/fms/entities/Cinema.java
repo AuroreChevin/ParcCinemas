@@ -43,6 +43,6 @@ public class Cinema {
 	private City city;
 	@ToString.Exclude
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "cinema")
-	@Cascade(CascadeType.ALL)
+	@Cascade(CascadeType.DELETE)
 	private Collection<Film> films;
 }

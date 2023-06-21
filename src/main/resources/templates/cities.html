@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="fr"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout">
+	layout:decorate="layout"
+	xmlns:sec		  ="http://www.thymeleaf.org/extras/spring-security5">
 <head>
 <meta charset="UTF8">
 <title>Park Life Cinema</title>
@@ -23,14 +24,14 @@
 					<div class="row g-0">
 						<div class="col-md-8">
 							<div class="card-body">
-								<h5 th:text="${city.nameCity}" class="card-title"></h5>
-								<!--<ul >
-								<li >
-								<p th:text="${city.cinema.nameCinema}"></p>
+								<h5 th:text="${city.nameCity}"class="card-title"></h5>
+								<ul >
+								<li th:each="cinema:${listCinemas}">
+								<h6 th:text="${cinema.nameCinema}"></h6>
 								<li>
-								</ul>-->
-								<a class="btn btn btn-danger" th:href="@{/deleteCity(idCity=${city.idCity}, page=${currentPage})}">Supprimer</a> 
-								<a class="btn btn-primary" th:href="@{/cinema}">Ajouter un cinéma</a>
+								</ul>
+								<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn btn-danger" th:href="@{/deleteCity(idCity=${city.idCity})}">Supprimer</a> 
+								<a sec:authorize="hasRole('ROLE_ADMIN')"class="btn btn-primary" th:href="@{/cinema}">Ajouter un cinéma</a>
 							</div>
 						</div>
 					</div>

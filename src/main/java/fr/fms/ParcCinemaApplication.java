@@ -14,34 +14,43 @@ import fr.fms.entities.City;
 
 @SpringBootApplication
 public class ParcCinemaApplication implements CommandLineRunner {
-	@Autowired
-	CityRepository cityRepository;
-	@Autowired
-	CinemaRepository cinemaRepository;
-	@Autowired
-	FilmRepository filmRepository;
+	
+	  @Autowired CityRepository cityRepository;
+	  
+	  @Autowired CinemaRepository cinemaRepository;
+	  
+	  @Autowired FilmRepository filmRepository;
+	 
 	public static void main(String[] args) {
 		SpringApplication.run(ParcCinemaApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		generateData();
+		//generateData();
 	}
+	
 	public void generateData() {
 		City toulouse = cityRepository.save(new City(null, "Toulouse", null));
 		City saintAmandLesEaux = cityRepository.save(new City(null, "Saint-Amand-Les-Eaux", null));
 		City nice = cityRepository.save(new City(null, "Nice", null));
 		City rennes = cityRepository.save(new City(null, "Rennes", null));
-		
-		Cinema americanCosmo = cinemaRepository.save(new Cinema(null, "American Cosmograph", "24 Rue Montardy","0561236620", 3, toulouse, null));
-		Cinema pathWilson = cinemaRepository.save(new Cinema(null, "Pathé Wilson", " 3 Pl. du Président Thomas Wilson","0892696696", 10, toulouse, null));
-		Cinema cinamand = cinemaRepository.save(new Cinema(null, "Cin'amand", "E.Leclerc, Rocade du N,","0369266620", 8, saintAmandLesEaux, null));
-		Cinema pathMass = cinemaRepository.save(new Cinema(null, "Pathé Masséna", "31 Av. Jean Médecin","0892696696", 5, nice, null));
-		Cinema rialto = cinemaRepository.save(new Cinema(null, "Rialto", "4 rue de Rivoli","0568120452", 3, nice, null));
-		Cinema pathRennes = cinemaRepository.save(new Cinema(null, "Pathé Rennes", "12 rue Yvonne Jean-Haffen","0892696696",11, rennes, null));
-		Cinema arvor = cinemaRepository.save(new Cinema(null, "Cinema Arvor", "11 rue de Châtillon","0299387804", 3, rennes, null));
-		
+
+		Cinema americanCosmo = cinemaRepository
+				.save(new Cinema(null, "American Cosmograph", "24 Rue Montardy", "0561236620", 3, toulouse, null));
+		Cinema pathWilson = cinemaRepository.save(new Cinema(null, "Pathé Wilson", " 3 Pl. du Président Thomas Wilson",
+				"0892696696", 10, toulouse, null));
+		Cinema cinamand = cinemaRepository.save(
+				new Cinema(null, "Cin'amand", "E.Leclerc, Rocade du N,", "0369266620", 8, saintAmandLesEaux, null));
+		Cinema pathMass = cinemaRepository
+				.save(new Cinema(null, "Pathé Masséna", "31 Av. Jean Médecin", "0892696696", 5, nice, null));
+		Cinema rialto = cinemaRepository
+				.save(new Cinema(null, "Rialto", "4 rue de Rivoli", "0568120452", 3, nice, null));
+		Cinema pathRennes = cinemaRepository
+				.save(new Cinema(null, "Pathé Rennes", "12 rue Yvonne Jean-Haffen", "0892696696", 11, rennes, null));
+		Cinema arvor = cinemaRepository
+				.save(new Cinema(null, "Cinema Arvor", "11 rue de Châtillon", "0299387804", 3, rennes, null));
+
 		filmRepository.save(new Film(null, "GodFather", "Francis Ford Coppola", 175, americanCosmo));
 		filmRepository.save(new Film(null, "Trainspotting", "Danny Boyle", 75, americanCosmo));
 		filmRepository.save(new Film(null, "Delivrance", "John Boorman", 110, cinamand));
@@ -55,6 +64,7 @@ public class ParcCinemaApplication implements CommandLineRunner {
 		cityRepository.findAll().forEach(c -> System.out.println(c));
 		cinemaRepository.findAll().forEach(a -> System.out.println(a));
 		filmRepository.findAll().forEach(f -> System.out.println(f));
-					
+
 	}
+	 
 }

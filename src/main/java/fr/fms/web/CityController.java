@@ -54,13 +54,13 @@ public class CityController {
 	 * @return une redirection vers ../listCities avec les éléments permettant de garder le contexte actuel
 	 */
 	@GetMapping("/deleteCity")
-	public String deleteCity(Long idCity,int page) {
+	public String deleteCity(Long idCity) {
 		try {
 			business.deleteCity(idCity);
 		}catch(Exception e) {
 			logger.error("Impossible de supprimer la ville" , e.getMessage());
 		}
-		return "redirect:/listCities?page="+page;
+		return "redirect:/listCities";
 	}
 	/**
 	 * Méthode en POST correspondant à l'url .../saveCity visant à sauvegarder ou mettre à jour une ville

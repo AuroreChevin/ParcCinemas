@@ -31,6 +31,6 @@ public class City implements Serializable{
 	private String nameCity;
 	@ToString.Exclude
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "city")
-	@Cascade(CascadeType.ALL)
+	@Cascade(CascadeType.DELETE)
 	private Collection<Cinema> cinemas;
 }
