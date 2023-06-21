@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
@@ -34,7 +35,7 @@ public class Cinema {
 	@Size(min=1,max=50)
 	private String address;
 	@NotNull
-	@Digits(fraction = 10, integer = 10)
+	@Pattern(regexp="(^$|[0-9]{10})", message ="Numéro invalide")
 	private String phone;
 	@NotNull
 	@DecimalMin("1")

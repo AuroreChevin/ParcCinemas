@@ -24,12 +24,7 @@
 					<div class="row g-0">
 						<div class="col-md-8">
 							<div class="card-body">
-								<h5 th:text="${city.nameCity}"class="card-title"></h5>
-								<ul >
-								<li th:each="cinema:${listCinemas}">
-								<h6 th:text="${cinema.nameCinema}"></h6>
-								<li>
-								</ul>
+								<h5 th:text="${city.nameCity}" class="card-title"></h5>							
 								<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn btn-danger" th:href="@{/deleteCity(idCity=${city.idCity})}">Supprimer</a> 
 								<a sec:authorize="hasRole('ROLE_ADMIN')"class="btn btn-primary" th:href="@{/cinema}">Ajouter un cinéma</a>
 							</div>

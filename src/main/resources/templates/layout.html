@@ -16,8 +16,8 @@
 				<li sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/cinema}">Cinéma</a></li>
 				<li sec:authorize="hasRole('ROLE_ADMIN')"><a class="nav-link" th:href="@{/film}">Film</a></li>
 				<li sec:authorize="hasRole('ROLE_USER')"><a class="nav-link">Panier</a></li>
-				<li><a class="nav-link" th:href="@{/login}">login</a></li>
-				<li><a class="nav-link" th:href="@{/logout}">logout</a></li>
+				<li><a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}">login</a></li>
+				<li ><a class="nav-link"sec:authorize="isAuthenticated()" th:href="@{/logout}">logout</a></li>
 			</ul>
 			
 	</nav>

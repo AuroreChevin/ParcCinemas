@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,7 +30,7 @@ public class Film {
 	@Size(min=1,max=50)
 	private String director;
 	@NotNull
-	@Digits(fraction = 0, integer = 3, message = "Durée invalide")
+	@DecimalMin("20")
 	private int duration;
 	@ManyToOne
 	private Cinema cinema;

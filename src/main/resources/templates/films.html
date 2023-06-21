@@ -22,6 +22,7 @@
 								<p class="card-text" th:text="${film.duration}+ ' min'"></p>
 								<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn btn-danger" th:href="@{/deleteFilm(idFilm=${film.idFilm}, page=${currentPage}, idCinema=${idCinema})}">Supprimer</a>
 								<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary" th:href="@{/editFilm(idFilm=${film.idFilm})}">Edit</a>
+								<a class="btn btn-success" href="#">Séances</a>
 							</div>
 						</div>
 					</div>

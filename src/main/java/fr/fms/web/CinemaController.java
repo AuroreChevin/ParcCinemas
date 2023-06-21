@@ -15,7 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import fr.fms.business.IbusinessImpl;
 import fr.fms.entities.Cinema;
@@ -56,14 +58,6 @@ public class CinemaController {
 			model.addAttribute("currentPage", page);
 			model.addAttribute("searchByKeyword", kw);
 			model.addAttribute("listCities", cities);
-			/*
-			 * String username; Object principal =
-			 * SecurityContextHolder.getContext().getAuthentication().getPrincipal(); if
-			 * (principal instanceof UserDetails) { username =
-			 * ((UserDetails)principal).getUsername(); } else { username =
-			 * principal.toString(); if(username.contains("anonymous")) username = ""; }
-			 * model.addAttribute("username", " " +username);
-			 */
 		}catch(Exception e) {
 			logger.error("Impossible d'afficher les cinémas" , e.getMessage());
 		}
@@ -138,5 +132,9 @@ public class CinemaController {
 			logger.error("Impossible de mettre à jour le film" , e.getMessage());
 		}
 		return "editCinema";
+	}
+	@RequestMapping("/greating")
+	public @ResponseBody String greating() {
+		return business.great();
 	}
 }

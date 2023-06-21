@@ -91,5 +91,7 @@ public class IbusinessImpl implements Ibusiness{
 		return cinemaRepository.findByCityIdCity(idCity);
 	}
 	
-	
+	public String great() {
+		return "Hello World";
+	}
 }
