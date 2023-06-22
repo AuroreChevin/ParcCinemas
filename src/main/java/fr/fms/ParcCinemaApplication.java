@@ -60,7 +60,9 @@ public class ParcCinemaApplication implements CommandLineRunner {
 		filmRepository.save(new Film(null, "GodFather 2", "Francis Ford Coppola", 202, pathRennes));
 		filmRepository.save(new Film(null, "Le royaume des chats", "Hiroyuki Morita", 75, rialto));
 		filmRepository.save(new Film(null, "Les Goonies", "Richard Donner", 114, pathMass));
-		filmRepository.save(new Film(null, "Vice et versa", "Pete Docter", 95, pathMass));
+		filmRepository.save(new Film(null, "Vice-versa", "Pete Docter", 95, pathMass));
+		filmRepository.save(new Film(null, "L'arnaque", "George Roy Hill", 129, americanCosmo));
+		filmRepository.save(new Film(null, "The crow", "Alex Proyas", 102, arvor));
 		cityRepository.findAll().forEach(c -> System.out.println(c));
 		cinemaRepository.findAll().forEach(a -> System.out.println(a));
 		filmRepository.findAll().forEach(f -> System.out.println(f));

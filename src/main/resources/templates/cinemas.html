@@ -45,7 +45,7 @@
 								</p>
 								<a class="btn btn-success" th:href = "@{/listFilms(idCinema=${cinema.idCinema})}">Films à l'affiche</a> 
 								
-								<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn btn-danger" th:href="@{/deleteCinema(idCinema=${cinema.idCinema}, page=${currentPage})}">Supprimer</a> 
+								<a sec:authorize="hasRole('ROLE_ADMIN')"onclick="return confirm('Êtes-vous sûr ?')" class="btn btn btn-danger" th:href="@{/deleteCinema(idCinema=${cinema.idCinema}, page=${currentPage})}">Supprimer</a> 
 								
 								<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary" th:href="@{/editCinema(idCinema=${cinema.idCinema})}">Edit</a>
 								<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary mt-2" th:href="@{/film}">Ajouter un film</a>

@@ -15,6 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import fr.fms.business.IbusinessImpl;
+import fr.fms.dao.CinemaRepository;
 
 @AutoConfigureMockMvc
 @SpringBootTest
@@ -23,6 +24,8 @@ public class ParcCinemaControllerTests {
 	private MockMvc mvc;
 	@MockBean
 	IbusinessImpl business;
+	@MockBean
+	CinemaRepository cinemaRepository;
 	 @Test
 	    void test_get_welcome() throws Exception {
 	    	when(business.great()).thenReturn("Hello, Mock");
@@ -33,4 +36,5 @@ public class ParcCinemaControllerTests {
 	            .andExpect(content()
 	            .string(containsString("Hello, Mock")));
 	    }
+	
 }

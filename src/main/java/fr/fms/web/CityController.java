@@ -34,14 +34,14 @@ public class CityController {
 	@GetMapping("/listCities")
 	public String cities(Model model, @RequestParam(name="page", defaultValue = "0") int page, Long idCity) throws Exception {
 		Page<City> cities;
-		List<Cinema> cinemas;
+		//List<Cinema> cinemas;
 		try {
 			cities = business.readAllCitiesPages(page);
-			cinemas = business.readAllCinemasByIdCity(idCity);
+			//cinemas = business.readAllCinemasByIdCity(idCity);
 			model.addAttribute("listCities", cities.getContent());
 			model.addAttribute("pages", new int[cities.getTotalPages()]);
 			model.addAttribute("currentPage", page);
-			model.addAttribute("listCinemas", cinemas);
+			//model.addAttribute("listCinemas", cinemas);
 		}catch(Exception e) {
 			logger.error("Impossible d'afficher les villes" , e.getMessage());
 		}

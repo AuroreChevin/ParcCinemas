@@ -104,7 +104,7 @@ public interface Ibusiness {
 	/**
 	 * Méthode qui renvoi la liste des cinémas en base
 	 * @param idCity est l'id de la ville dont on souhaite afficher tous les cinemas d'une ville
-	 * @return Lity<Cinema>
+	 * @return City<Cinema>
 	 * @throws Exception
 	 */
 	public List<Cinema> readAllCinemasByIdCity(Long idCity) throws Exception;
